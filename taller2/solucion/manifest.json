@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Mensajes Motivacionales",
+  "version": "1.0",
+  "description": "Plugin que muestra mensajes motivacionales desde una API",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>", "https://api.adviceslip.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Mensaje Motivacional"
+  }
+}

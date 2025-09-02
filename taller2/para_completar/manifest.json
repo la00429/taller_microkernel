@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Motivational Messages Pro",
+  "version": "2.0.0",
+  "description": "Professional motivational message system demonstrating microkernel + external service integration",
+  
+  // FRAGMENTO 1: Configurar permisos básicos
+  // Instrucción: Agregar permisos para pestañas y scripting
+  "permissions": [
+    // TODO: Agregar "activeTab", "scripting"
+  ],
+  
+  // FRAGMENTO 2: Configurar permisos de host  
+  // Instrucción: Permitir acceso a todas las URLs
+  "host_permissions": [
+    // TODO: Agregar "<all_urls>"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Motivational Messages Pro",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png", 
+      "48": "icon48.png"
+    }
+  },
+  
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png", 
+    "128": "icon128.png"
+  },
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

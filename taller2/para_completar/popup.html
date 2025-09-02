@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivational Messages Pro</title>
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --motivation-gradient: linear-gradient(135deg, #ff6b6b, #ee5a52);
+      --inspiration-gradient: linear-gradient(135deg, #4ecdc4, #44a08d);
+      --success-gradient: linear-gradient(135deg, #feca57, #ff9ff3);
+      --text-primary: #333;
+      --text-secondary: #666;
+      --bg-light: #f8f9fa;
+      --border-radius: 16px;
+      --shadow-light: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 360px;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-primary);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+      padding: 24px;
+      background: var(--primary-gradient);
+      border-radius: var(--border-radius);
+      color: white;
+      box-shadow: var(--shadow-light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: shimmer 3s linear infinite;
+    }
+    
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header .subtitle {
+      font-size: 13px;
+      opacity: 0.9;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .controls {
+      display: grid;
+      gap: 16px;
+    }
+    
+    .control-section {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--shadow-light);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .message-grid {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .message-btn {
+      padding: 18px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .message-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .message-btn:hover::before {
+      left: 100%;
+    }
+    
+    .message-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .message-btn:active {
+      transform: translateY(-1px);
+    }
+    
+    .btn-motivation {
+      background: var(--motivation-gradient);
+    }
+    
+    .btn-inspiration {
+      background: var(--inspiration-gradient);
+    }
+    
+    .btn-success {
+      background: var(--success-gradient);
+      color: #333;
+    }
+    
+    .status-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .loading {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .loading.active {
+      display: flex;
+    }
+    
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #e0e0e0;
+      border-top: 2px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .error {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      color: #f44336;
+      font-size: 14px;
+      background: rgba(244, 67, 54, 0.1);
+      padding: 12px;
+      border-radius: 8px;
+    }
+    
+    .error.active {
+      display: flex;
+    }
+    
+    .footer {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    
+    .footer .info {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .tech-badge {
+      display: inline-block;
+      background: var(--primary-gradient);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      margin: 2px;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>✨ Motivational Messages Pro</h1>
+    <div class="subtitle">
+      Advanced Microkernel + External API Integration
+    </div>
+  </div>
+  
+  <div class="controls">
+    <div class="status-section">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <span>Fetching inspirational content...</span>
+      </div>
+      
+      <div class="error" id="error">
+        <span>⚠️</span>
+        <span>Service temporarily unavailable</span>
+      </div>
+      
+      <div id="ready-status" style="color: #4CAF50; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+        <span style="width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; animation: pulse 2s infinite;"></span>
+        System Ready
+      </div>
+    </div>
+    
+    <div class="control-section">
+      <div class="section-title">
+        🎯 Message Categories
+      </div>
+      
+      <div class="message-grid">
+        <!-- FRAGMENTO 3: Configurar botón motivacional -->
+        <!-- Instrucción: Agregar id="btn-motivational" al botón -->
+        <button class="message-btn btn-motivation">
+          <span>💪</span>
+          <span>Get Motivated</span>
+        </button>
+        
+        <!-- FRAGMENTO 4: Configurar botón inspiracional -->
+        <!-- Instrucción: Agregar id="btn-inspirational" al botón -->
+        <button class="message-btn btn-inspiration">
+          <span>🌟</span>
+          <span>Find Inspiration</span>
+        </button>
+        
+        <!-- FRAGMENTO 5: Configurar botón de éxito -->
+        <!-- Instrucción: Agregar id="btn-success" al botón -->
+        <button class="message-btn btn-success">
+          <span>🚀</span>
+          <span>Success Mindset</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="info">
+      <strong>Architecture Demonstration</strong><br>
+      <span class="tech-badge">Microkernel</span>
+      <span class="tech-badge">External API</span>
+      <span class="tech-badge">Service Composition</span>
+      <br><br>
+      Professional extension showcasing advanced integration patterns
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
