@@ -4,33 +4,19 @@
   "version": "2.0.0",
   "description": "Professional motivational message system demonstrating microkernel + external service integration",
   
-  // FRAGMENTO 1: Configurar permisos básicos
-  // Instrucción: Agregar permisos para pestañas y scripting
+  "_comment_fragmento_1": "FRAGMENTO 1: Configurar permisos básicos - Agregar: activeTab, scripting",
   "permissions": [
-    // TODO: Agregar "activeTab", "scripting"
+    
   ],
   
-  // FRAGMENTO 2: Configurar permisos de host  
-  // Instrucción: Permitir acceso a todas las URLs
+  "_comment_fragmento_2": "FRAGMENTO 2: Configurar permisos de host - Agregar: <all_urls>",
   "host_permissions": [
-    // TODO: Agregar "<all_urls>"
+    
   ],
   
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Motivational Messages Pro",
-    "default_icon": {
-      "16": "icon16.png",
-      "32": "icon32.png", 
-      "48": "icon48.png"
-    }
-  },
-  
-  "icons": {
-    "16": "icon16.png",
-    "32": "icon32.png",
-    "48": "icon48.png", 
-    "128": "icon128.png"
+    "default_title": "Motivational Messages Pro"
   },
   
   "content_security_policy": {

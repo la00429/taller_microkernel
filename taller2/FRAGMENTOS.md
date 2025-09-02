@@ -3,13 +3,13 @@
 ## 📋 Lista de Fragmentos a Completar
 
 ### **FRAGMENTO 1: Permisos básicos (manifest.json)**
-**Ubicación**: Línea 8, dentro del array `"permissions"`
+**Ubicación**: Línea 8-10, dentro del array `"permissions"`
 ```json
 "activeTab", "scripting"
 ```
 
 ### **FRAGMENTO 2: Permisos de host (manifest.json)**
-**Ubicación**: Línea 13, dentro del array `"host_permissions"`  
+**Ubicación**: Línea 13-15, dentro del array `"host_permissions"`  
 ```json
 "<all_urls>"
 ```
